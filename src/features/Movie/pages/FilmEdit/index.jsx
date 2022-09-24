@@ -24,7 +24,7 @@ import {
   TreeSelect,
   Upload,
 } from "antd";
-import { formatDate } from "../../uilts/date";
+import { formatDate, formatDate2 } from "../../uilts/date";
 import { useHistory, useRouteMatch } from "react-router-dom";
 
 function FilmEdit() {
@@ -105,7 +105,7 @@ function FilmEdit() {
 
    
     onSubmit: (values) => {
-     
+     console.log(values)
       values.maNhom = "GP00";
       let formData = new FormData();
       for (let key in values) {
@@ -202,7 +202,8 @@ function FilmEdit() {
            
             name="ngayKhoiChieu "
             onChange={handleChangeDatePicker}
-            value={moment(formatDate(formik.values.ngayKhoiChieu))}
+            format={"DD/MM/YY"}
+            value={moment(formik.values.ngayKhoiChieu)}
           />
         </Form.Item>
         <Form.Item label="Số sao">

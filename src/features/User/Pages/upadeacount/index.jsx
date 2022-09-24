@@ -60,7 +60,7 @@ console.log(typeUser)
        
       });
 
-     
+     alert("cap nhat nguoi dung thanh cong")
     } catch (err) {
       console.log(err)
     }

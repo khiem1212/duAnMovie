@@ -6,11 +6,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchMovieDetelAction, fetchMoviesAction } from "../../action";
 import { NavLink } from "react-router-dom";
 import { fetchProfileAction } from "../../../authencation/action";
+import { useMemo } from "react";
 function Moviemanger() {
   const dispatch = useDispatch();
   const onSearch = (value) => {
     dispatch(fetchMoviesAction(value));
   };
+  const deleted=(value)=>{
+    dispatch(fetchMovieDetelAction(value));
+    dispatch(fetchMoviesAction());
+  }
   const columns = [
     {
       title: "MÃ PHIM",
@@ -72,7 +77,7 @@ function Moviemanger() {
               <NavLink style={{marginRight:"20px",fontSize:"25px"}} key={5} to={`/ShowTime/${film.maPhim}`}>
                 <CreditCardOutlined />{" "}
               </NavLink>
-              <DeleteOutlined style={{fontSize:"25px"}} onClick={()=>{ dispatch(fetchMovieDetelAction(film.maPhim))}} />
+              <DeleteOutlined style={{fontSize:"25px"}} onClick={()=>{deleted(film.maPhim)}} />
             </div>
           </Fragment>
         );
@@ -89,7 +94,11 @@ function Moviemanger() {
     dispatch(fetchMoviesAction());
     dispatch(fetchProfileAction);
   },[]);
-
+  useEffect(() => {
+    // dispatch(fetchMoviesAction());
+   
+  },data);
+  
   const onChange = (pagination, filters, sorter, extra) => {
    
   };

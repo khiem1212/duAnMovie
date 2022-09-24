@@ -46,7 +46,7 @@ function ShowTime(props) {
          
         });
   
-       
+       alert("tao lich chieu thanh cong")
       } catch (err) {
       
       }

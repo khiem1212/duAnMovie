@@ -17,7 +17,10 @@ import { NavLink } from 'react-router-dom';
 function Managaer() {
   const dispatch=useDispatch();
   
-
+  const deleted=(value)=>{
+    dispatch(fetchDeletelAction(value));
+    dispatch(fetchUser());
+  }
 
   const onSearch = async (value) => {
     dispatch(fetchUser(value))
@@ -86,7 +89,7 @@ function Managaer() {
         return <Fragment>
           <>
           
-          <DeleteOutlined style={{marginRight:"20px",fontSize:"25px"}} onClick={()=>{ dispatch(fetchDeletelAction(data.taiKhoan))}} >Delete</DeleteOutlined>
+          <DeleteOutlined style={{marginRight:"20px",fontSize:"25px"}} onClick={()=>{deleted(data.taiKhoan)}} >Delete</DeleteOutlined>
           <NavLink style={{fontSize:"25px"}} key={2}  to={`/Updateaccount/${data.taiKhoan}`}><EditOutlined /></NavLink>
        
           </>
