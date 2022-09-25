@@ -51,7 +51,7 @@ function AddUser() {
        
       });
 
-     
+     alert("them nguuoi dung thanh cong")
     } catch (err) {
       console.log(err)
     }
